@@ -4,13 +4,13 @@ import MainHeader from '../MainHeader'
 import Aside from '../Aside'
 import Content from '../Content'
 
-const Layout: React.FC = (): JSX.Element => {
+const Layout: React.FC = ({ children }): JSX.Element => {
   return (
     <>
       <S.Grid>
         <MainHeader />
         <Aside />
-        <Content />
+        <Content>{children}</Content>
       </S.Grid>
     </>
   )

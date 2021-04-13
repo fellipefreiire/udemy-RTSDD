@@ -1,9 +1,9 @@
 import * as S from './styled'
 
-const Content: React.FC = (): JSX.Element => {
+const Content: React.FC = ({ children }): JSX.Element => {
   return (
     <>
-      <S.Container>Content</S.Container>
+      <S.Container>{children}</S.Container>
     </>
   )
 }
