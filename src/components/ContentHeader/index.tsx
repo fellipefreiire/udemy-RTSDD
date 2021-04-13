@@ -1,15 +1,21 @@
 import * as S from './styled'
 
-const ContentHeader: React.FC = (): JSX.Element => {
+interface IContentHeaderProps {
+  title: string
+  lineColor: string
+}
+
+const ContentHeader: React.FC<IContentHeaderProps> = ({
+  title,
+  lineColor,
+  children
+}): JSX.Element => {
   return (
     <S.Container>
       <S.TitleWrapper>
-        <S.Title>Título</S.Title>
+        <S.Title lineColor={lineColor}>{title}</S.Title>
       </S.TitleWrapper>
-      <S.Controllers>
-        <button type='button'>Botão A</button>
-        <button type='button'>Botão B</button>
-      </S.Controllers>
+      <S.Controllers>{children}</S.Controllers>
     </S.Container>
   )
 }
