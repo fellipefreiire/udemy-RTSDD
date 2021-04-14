@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Layout from '../components/Layout'
 import Dashboard from '../components/Dashboard'
+import List from '../components/List'
 
 const Homepage: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ const Homepage: React.FC = () => {
       </Head>
 
       <Layout>
-        <Dashboard />
+        <List />
       </Layout>
     </div>
   )

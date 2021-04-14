@@ -9,6 +9,7 @@ export const Container = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: center;
+  margin-bottom: 2rem;
 `
 
 export const TitleWrapper = styled.div``
