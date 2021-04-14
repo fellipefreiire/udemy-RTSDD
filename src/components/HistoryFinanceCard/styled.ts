@@ -1,18 +1,14 @@
 import styled from 'styled-components'
 
-interface IWrapperProps {
-  color: string
-}
-
 interface ITagProps {
   color: string
 }
 
-export const Wrapper = styled.li<IWrapperProps>`
+export const Wrapper = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({ theme, color }) => theme.dark.colors[color]};
+  background-color: ${({ theme }) => theme.dark.colors.tertiary};
   list-style: none;
   border-radius: 5px;
   padding: 0.5rem 2rem;

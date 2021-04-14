@@ -1,7 +1,6 @@
 import * as S from './styled'
 
 interface IHistoryHinanceCardProps {
-  cardColor: string
   tagColor: string
   title: string
   subtitle: string
@@ -9,14 +8,13 @@ interface IHistoryHinanceCardProps {
 }
 
 const HistoryFinanceCard: React.FC<IHistoryHinanceCardProps> = ({
-  cardColor,
   tagColor,
   title,
   subtitle,
   amount
 }): JSX.Element => {
   return (
-    <S.Wrapper color={cardColor}>
+    <S.Wrapper>
       <S.Tag color={tagColor} />
       <S.Container>
         <S.Span>{title}</S.Span>

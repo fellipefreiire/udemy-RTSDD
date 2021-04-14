@@ -17,91 +17,78 @@ const List: React.FC = (): JSX.Element => {
 
       <S.Content>
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
           amount='R$ 130,00'
         />
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
           amount='R$ 130,00'
         />
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
           amount='R$ 130,00'
         />
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
           amount='R$ 130,00'
         />
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
           amount='R$ 130,00'
         />
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
           amount='R$ 130,00'
         />
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
           amount='R$ 130,00'
         />
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
           amount='R$ 130,00'
         />
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
           amount='R$ 130,00'
         />
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
           amount='R$ 130,00'
         />
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
           amount='R$ 130,00'
         />
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
           amount='R$ 130,00'
         />
         <HistoryFinanceCard
-          cardColor='tertiary'
           tagColor='warning'
           title='Conta de luz'
           subtitle='13/04/2021'
