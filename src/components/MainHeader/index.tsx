@@ -1,13 +1,15 @@
-import { useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import Toggle from '../Toggle'
 import emojis from '../../utils/emojis'
 
 import * as S from './styled'
 
 const MainHeader: React.FC = (): JSX.Element => {
-  const emoji = useMemo(() => {
+  const [emoji, setEmoji] = useState('')
+
+  useEffect(() => {
     const indice = Math.floor(Math.random() * emojis.length)
-    return emojis[indice]
+    setEmoji(emojis[indice])
   }, [])
 
   return (

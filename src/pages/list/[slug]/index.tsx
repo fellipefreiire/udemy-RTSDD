@@ -2,13 +2,26 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Layout from '../../../components/Layout'
 import List from '../../../components/List'
 
+import gains from '../../../repositories/gains'
+import expenses from '../../../repositories/expenses'
+
 interface ISlugPageProps {
-  type: { title: string; lineColor: string }
+  type: {
+    title: string
+    lineColor: string
+    list: {
+      description: string
+      amount: string
+      type: string
+      frequency: string
+      date: string
+    }[]
+  }
 }
 
 const SlugPage: React.FC<ISlugPageProps> = ({ type }): JSX.Element => (
   <Layout>
-    <List title={type.title} lineColor={type.lineColor} />
+    <List title={type.title} lineColor={type.lineColor} list={type.list} />
   </Layout>
 )
 
