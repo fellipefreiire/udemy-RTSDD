@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router'
+
 import * as S from './styled'
 import Link from 'next/link'
 
@@ -15,6 +17,9 @@ import Icons from './Icons'
 import Logo from '../../assets/logo.svg'
 
 const Aside: React.FC = (): JSX.Element => {
+  const router = useRouter()
+  const { type } = router.query
+
   return (
     <S.Container>
       <S.Header>
@@ -34,7 +39,7 @@ const Aside: React.FC = (): JSX.Element => {
             </Link>
           )
         })} */}
-        <Link href='#' passHref>
+        <Link href='/dashboard' passHref>
           <S.MenuItemLink>
             <MdDashboard />
             Dashboard
@@ -46,13 +51,13 @@ const Aside: React.FC = (): JSX.Element => {
             Novo registro
           </S.MenuItemLink>
         </Link>
-        <Link href='#' passHref>
+        <Link href='/list/entry-balance' passHref>
           <S.MenuItemLink>
             <MdArrowUpward />
             Entradas
           </S.MenuItemLink>
         </Link>
-        <Link href='#' passHref>
+        <Link href='/list/exit-balance' passHref>
           <S.MenuItemLink>
             <MdArrowDownward />
             Saídas

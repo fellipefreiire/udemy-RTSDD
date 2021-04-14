@@ -3,7 +3,12 @@ import HistoryFinanceCard from '../HistoryFinanceCard'
 import SelectInput from '../SelectInput'
 import * as S from './styled'
 
-const List: React.FC = (): JSX.Element => {
+interface IListProps {
+  title: string
+  lineColor: string
+}
+
+const List: React.FC<IListProps> = ({ title, lineColor }): JSX.Element => {
   const months = [
     { value: 7, label: 'Julho' },
     { value: 8, label: 'Agosto' },
@@ -17,7 +22,7 @@ const List: React.FC = (): JSX.Element => {
   ]
   return (
     <S.Container>
-      <ContentHeader title='Saídas' lineColor='warning'>
+      <ContentHeader title={title} lineColor={lineColor}>
         <SelectInput options={months} />
         <SelectInput options={years} />
       </ContentHeader>
