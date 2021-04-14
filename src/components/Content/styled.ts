@@ -15,9 +15,12 @@ export const Container = styled.div`
   ::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.dark.colors.secondary};
     border-radius: 10px;
+    border: 0.5em solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
   }
 
   ::-webkit-scrollbar-track {
     background-color: ${({ theme }) => theme.dark.colors.tertiary};
+    margin: 120px;
   }
 `
