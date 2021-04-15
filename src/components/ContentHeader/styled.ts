@@ -20,7 +20,7 @@ export const Title = styled.h1<ITitleProps>`
     display: block;
     width: 3.5rem;
     border-bottom: 0.5rem solid
-      ${({ theme, lineColor }) => theme.dark.colors[lineColor]};
+      ${({ theme, lineColor }) => theme.colors[lineColor]};
   }
 `
 

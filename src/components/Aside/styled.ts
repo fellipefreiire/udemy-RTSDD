@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   grid-area: AS;
-  color: ${({ theme }) => theme.dark.colors.white};
-  background-color: ${({ theme }) => theme.dark.colors.secondary};
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.secondary};
 
-  border-right: 1px solid ${({ theme }) => theme.dark.colors.gray};
+  border-right: 1px solid ${({ theme }) => theme.colors.gray};
   padding: 1rem 2rem;
 `
 
@@ -27,7 +27,7 @@ export const MenuContainer = styled.nav`
 `
 
 export const MenuItemLink = styled.a`
-  color: ${({ theme }) => theme.dark.colors.info};
+  color: ${({ theme }) => theme.colors.info};
   text-decoration: none;
   transition: opacity 0.5s ease;
   font-size: 18px;

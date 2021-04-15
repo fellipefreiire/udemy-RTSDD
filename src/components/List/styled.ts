@@ -20,7 +20,7 @@ export const Button = styled.button<IButtonProps>`
   font-size: 18px;
   font-weight: 600;
   background: none;
-  color: ${({ theme }) => theme.dark.colors.white};
+  color: ${({ theme }) => theme.colors.white};
   margin: 0 0.5rem;
   transition: opacity 0.5s;
   opacity: ${({ selected }) => (selected ? 1 : 0.4)};
@@ -38,7 +38,7 @@ export const Button = styled.button<IButtonProps>`
     border-bottom: 10px solid
       ${({ theme, buttonType }) =>
         buttonType === 'recorrente'
-          ? theme.dark.colors.success
-          : theme.dark.colors.warning};
+          ? theme.colors.success
+          : theme.colors.warning};
   }
 `

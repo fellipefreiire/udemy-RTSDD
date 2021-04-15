@@ -1,5 +1,6 @@
 const theme = {
   dark: {
+    title: 'dark',
     colors: {
       primary: '#1b1f38',
       secondary: '#252a48',
@@ -15,6 +16,7 @@ const theme = {
     }
   },
   light: {
+    title: 'light',
     colors: {
       primary: '#DCDCDC',
       secondary: '#FFFFFF',

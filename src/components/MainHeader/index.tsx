@@ -15,7 +15,7 @@ const MainHeader: React.FC = (): JSX.Element => {
   return (
     <>
       <S.Container>
-        <Toggle />
+        <Toggle labelLeft='Light' labelRight='Dark' />
         <S.Profile>
           <S.Welcome>Olá, {emoji}</S.Welcome>
           <S.Username>Felipe Freire</S.Username>

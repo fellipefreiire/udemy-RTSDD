@@ -8,7 +8,7 @@ export const Wrapper = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({ theme }) => theme.dark.colors.tertiary};
+  background-color: ${({ theme }) => theme.colors.tertiary};
   list-style: none;
   border-radius: 5px;
   padding: 0.5rem 2rem;
@@ -26,7 +26,7 @@ export const Wrapper = styled.li`
 export const Tag = styled.div<ITagProps>`
   width: 1rem;
   height: 2rem;
-  background-color: ${({ theme, color }) => theme.dark.colors[color]};
+  background-color: ${({ theme, color }) => theme.colors[color]};
   position: absolute;
   left: 0;
 `
