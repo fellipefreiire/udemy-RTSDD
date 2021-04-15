@@ -1,4 +1,4 @@
-const theme = {
+const themes = {
   dark: {
     title: 'dark',
     colors: {
@@ -33,4 +33,4 @@ const theme = {
   }
 }
 
-export default theme
+export default themes

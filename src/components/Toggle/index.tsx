@@ -1,11 +1,7 @@
-import { useState } from 'react'
-
-import * as S from './styled'
-
+import { useEffect, useState } from 'react'
 import { useTheme } from '../../hooks/theme'
 
-import light from '../../styles/themes/light'
-import dark from '../../styles/themes/dark'
+import * as S from './styled'
 
 interface IToggleProps {
   labelLeft: string
@@ -16,18 +12,19 @@ const Toggle: React.FC<IToggleProps> = ({
   labelLeft,
   labelRight
 }): JSX.Element => {
-  const [checked, setChecked] = useState(true)
-  const { theme, setTheme } = useTheme()
+  const { toggleTheme } = useTheme()
+  const [checked, setChecked] = useState(null)
 
   const handleToggleTheme = () => {
-    if (theme.title === 'dark') {
-      setTheme(light)
-    } else if (theme.title === 'light') {
-      setTheme(dark)
-    }
-    console.log(theme)
     setChecked(!checked)
+    toggleTheme()
   }
+
+  useEffect(() => {
+    const toggleSaved = localStorage.getItem('@minha-carteira:toggle')
+
+    toggleSaved ? setChecked(JSON.parse(toggleSaved)) : true
+  }, [])
 
   return (
     <S.Container>
