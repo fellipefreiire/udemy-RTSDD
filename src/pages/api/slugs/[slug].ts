@@ -9,7 +9,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     if (slug === 'entry-balance') {
       return {
         title: 'Entradas',
-        lineColor: 'info',
+        lineColor: 'success',
         list: [
           {
             description: 'Salário',
