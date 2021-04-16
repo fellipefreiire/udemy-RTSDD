@@ -1,8 +1,8 @@
 import 'styled-components'
 
-import theme from './themes/dark'
+import theme from './theme'
 
-export type Theme = typeof theme
+export type Theme = typeof theme.dark
 
 declare module 'styled-components' {
   export interface DefaultTheme extends Theme {}

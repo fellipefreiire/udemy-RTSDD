@@ -4,7 +4,7 @@ export const Container = styled.div`
   grid-area: CT;
   color: ${props => props.theme.colors.white};
   background-color: ${props => props.theme.colors.primary};
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 7rem 1.5rem 2rem;
   height: calc(100vh - 5rem);
   overflow-y: scroll;
 

@@ -3,8 +3,10 @@ import * as S from './styled'
 
 import SelectInput from '../SelectInput'
 import ContentHeader from '../ContentHeader'
-import monthsList from '../../utils/months'
+import WalletBox from '../WalletBox'
+import MessageBox from '../MessageBox'
 
+import monthsList from '../../utils/months'
 import expenses from '../../repositories/expenses'
 import gains from '../../repositories/gains'
 
@@ -30,7 +32,7 @@ const Dashboard: React.FC = (): JSX.Element => {
 
     ;[...expenses, ...gains].forEach(item => {
       const date = new Date(item.date)
-      const year = date.getFullYear()
+      const year = date.getFullYear() + 1
 
       if (!uniqueYears.includes(year)) {
         uniqueYears.push(year)
@@ -44,6 +46,81 @@ const Dashboard: React.FC = (): JSX.Element => {
       }
     })
   }, [])
+
+  const totalExpenses = useMemo(() => {
+    const total: number[] = []
+
+    expenses.forEach(item => {
+      const date = new Date(item.date)
+      const year = date.getFullYear() + 1
+      const month = date.getMonth() + 1
+
+      if (month === monthSelected && year === yearSelected) {
+        try {
+          total.push(Number(item.amount))
+        } catch (error) {
+          throw new Error('Invalid amount! Amount must be a number')
+        }
+      }
+    })
+    const sum = total.reduce((accumulator, element) => {
+      return accumulator + element
+    }, 0)
+    return sum
+  }, [monthSelected, yearSelected])
+
+  const totalGains = useMemo(() => {
+    const total: number[] = []
+
+    gains.forEach(item => {
+      const date = new Date(item.date)
+      const year = date.getFullYear() + 1
+      const month = date.getMonth() + 1
+
+      if (month === monthSelected && year === yearSelected) {
+        try {
+          total.push(Number(item.amount))
+        } catch (error) {
+          throw new Error('Invalid amount! Amount must be a number')
+        }
+      }
+    })
+    const sum = total.reduce((accumulator, element) => {
+      return accumulator + element
+    }, 0)
+    return sum
+  }, [monthSelected, yearSelected])
+
+  const totalBalance = useMemo(() => {
+    return totalGains - totalExpenses
+  }, [totalGains, totalExpenses])
+
+  const message = useMemo(() => {
+    if (totalBalance < 0) {
+      return {
+        title: 'Que triste!',
+        description: 'Neste mês, você gastou mais do que deveria',
+        footerText:
+          'Verifique seus gastos e tente cortar algumas coisas desnecessárias',
+        icon: '/sad.svg'
+      }
+    } else if (totalBalance === 0) {
+      return {
+        title: 'Ufaa!',
+        description: 'Neste mês, você gastou exatamente o que ganhou',
+        footerText:
+          'Tenha cuidado. No próximo mês tente poupar o seu dinheiro.',
+        icon: '/happy.svg'
+      }
+    } else {
+      return {
+        title: 'Muito bem!',
+        description: 'Sua carteira está positiva!',
+        footerText: 'Continue assim. Considere investir seu saldo.',
+        icon: '/happy.svg'
+      }
+    }
+  }, [totalBalance])
 
   const handleMonthSelected = (month: string) => {
     try {
@@ -62,23 +139,51 @@ const Dashboard: React.FC = (): JSX.Element => {
       throw new Error('Invalid year value. Is accepted integer numbers only.')
     }
   }
+
   return (
-    <>
-      <S.Container>
-        <ContentHeader title='Dashboard' lineColor='info'>
-          <SelectInput
-            options={months}
-            onChange={e => handleMonthSelected(e.target.value)}
-            defaultValue={monthSelected}
-          />
-          <SelectInput
-            options={years}
-            onChange={e => handleYearSelected(e.target.value)}
-            defaultValue={yearSelected}
-          />
-        </ContentHeader>
-      </S.Container>
-    </>
+    <S.Container>
+      <ContentHeader title='Dashboard' lineColor='info'>
+        <SelectInput
+          options={months}
+          onChange={e => handleMonthSelected(e.target.value)}
+          defaultValue={monthSelected}
+        />
+        <SelectInput
+          options={years}
+          onChange={e => handleYearSelected(e.target.value)}
+          defaultValue={yearSelected}
+        />
+      </ContentHeader>
+      <S.Content>
+        <WalletBox
+          title='saldo'
+          amount={totalBalance}
+          footerLabel='atualizado com base nas entradas e saídas'
+          icon='dollar'
+          color='info'
+        />
+        <WalletBox
+          title='entrada'
+          amount={totalGains}
+          footerLabel='atualizado com base nas entradas e saídas'
+          icon='arrowUp'
+          color='success'
+        />
+        <WalletBox
+          title='saída'
+          amount={totalExpenses}
+          footerLabel='atualizado com base nas entradas e saídas'
+          icon='arrowDown'
+          color='warning'
+        />
+        <MessageBox
+          title={message.title}
+          description={message.description}
+          footerText={message.footerText}
+          icon={message.icon}
+        />
+      </S.Content>
+    </S.Container>
   )
 }
 
