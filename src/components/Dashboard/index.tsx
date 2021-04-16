@@ -151,18 +151,18 @@ const Dashboard: React.FC = (): JSX.Element => {
         name: 'Entradas',
         value: totalGains,
         percent: Number(gainsPercent.toFixed(0)),
-        color: '#4E41f0'
+        color: theme.colors.success
       },
       {
         name: 'Saídas',
         value: totalExpenses,
         percent: Number(expensesPercent.toFixed(0)),
-        color: '#E44C4E'
+        color: theme.colors.warning
       }
     ]
 
     return data
-  }, [yearSelected, monthSelected, totalBalance])
+  }, [yearSelected, monthSelected, totalBalance, theme])
 
   const historyData = useMemo(() => {
     const uniqueMonths: number[] = []
@@ -380,8 +380,8 @@ const Dashboard: React.FC = (): JSX.Element => {
         <PieChart data={relationExpensesGains} />
         <HistoryBox
           data={historyData}
-          lineColorAmountEntry='#4E41f0'
-          lineColorAmountOutput='#E44C4E'
+          lineColorAmountEntry={theme.colors.success}
+          lineColorAmountOutput={theme.colors.warning}
         />
         <BarChartBox title='Entradas' data={relationGainsRecurrentEventual} />
         <BarChartBox title='Saídas' data={relationExpensesRecurrentEventual} />
