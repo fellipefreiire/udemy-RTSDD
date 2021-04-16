@@ -1,5 +1,3 @@
-import { useRouter } from 'next/router'
-
 import * as S from './styled'
 import Link from 'next/link'
 
@@ -17,9 +15,6 @@ import Icons from './Icons'
 import Logo from '../../assets/logo.svg'
 
 const Aside: React.FC = (): JSX.Element => {
-  const router = useRouter()
-  const { type } = router.query
-
   return (
     <S.Container>
       <S.Header>
@@ -28,7 +23,7 @@ const Aside: React.FC = (): JSX.Element => {
       </S.Header>
 
       <S.MenuContainer>
-        {/* {contents.map((content, i) => {
+        {contents.map((content, i) => {
           const Icon = Icons[content.label]
           return (
             <Link href={content.href} passHref key={i}>
@@ -38,37 +33,7 @@ const Aside: React.FC = (): JSX.Element => {
               </S.MenuItemLink>
             </Link>
           )
-        })} */}
-        <Link href='/dashboard' passHref>
-          <S.MenuItemLink>
-            <MdDashboard />
-            Dashboard
-          </S.MenuItemLink>
-        </Link>
-        <Link href='#' passHref>
-          <S.MenuItemLink>
-            <MdAccountBalanceWallet />
-            Novo registro
-          </S.MenuItemLink>
-        </Link>
-        <Link href='/list/entry-balance' passHref>
-          <S.MenuItemLink>
-            <MdArrowUpward />
-            Entradas
-          </S.MenuItemLink>
-        </Link>
-        <Link href='/list/exit-balance' passHref>
-          <S.MenuItemLink>
-            <MdArrowDownward />
-            Saídas
-          </S.MenuItemLink>
-        </Link>
-        <Link href='#' passHref>
-          <S.MenuItemLink>
-            <MdExitToApp />
-            Sair
-          </S.MenuItemLink>
-        </Link>
+        })}
       </S.MenuContainer>
     </S.Container>
   )

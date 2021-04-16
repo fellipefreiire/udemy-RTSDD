@@ -4,11 +4,11 @@ const contents = [
     href: '#',
     text: 'Dashboard'
   },
-  {
-    label: 'MdAccountBalanceWallet',
-    href: '#',
-    text: 'Novo registro'
-  },
+  // {
+  //   label: 'MdAccountBalanceWallet',
+  //   href: '#',
+  //   text: 'Novo registro'
+  // },
   {
     label: 'MdArrowUpward',
     href: '#',
@@ -20,7 +20,7 @@ const contents = [
     text: 'Saídas'
   },
   {
-    label: 'MMdExitToApp',
+    label: 'MdExitToApp',
     href: '#',
     text: 'Sair'
   }

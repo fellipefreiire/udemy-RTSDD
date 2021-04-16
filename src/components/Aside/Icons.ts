@@ -2,13 +2,13 @@ import {
   MdDashboard,
   MdArrowDownward,
   MdArrowUpward,
-  MdExitToApp,
-  MdAccountBalanceWallet
+  MdExitToApp
+  // MdAccountBalanceWallet
 } from 'react-icons/md'
 
 const Icons = {
   MdDashboard,
-  MdAccountBalanceWallet,
+  // MdAccountBalanceWallet,
   MdArrowUpward,
   MdArrowDownward,
   MdExitToApp
