@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/Layout'
+import SignIn from '../components/SignIn'
 
 const Homepage: React.FC = () => {
   return (
@@ -7,7 +8,9 @@ const Homepage: React.FC = () => {
       <Head>
         <title>Minha Carteira</title>
       </Head>
-      <Layout>{/* <List /> */}</Layout>
+      {/* <Layout> */}
+      <SignIn />
+      {/* </Layout> */}
     </div>
   )
 }
