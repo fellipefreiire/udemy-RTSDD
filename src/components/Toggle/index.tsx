@@ -13,7 +13,7 @@ const Toggle: React.FC<IToggleProps> = ({
   labelRight
 }): JSX.Element => {
   const { toggleTheme } = useTheme()
-  const [checked, setChecked] = useState(null)
+  const [checked, setChecked] = useState(true)
 
   const handleToggleTheme = () => {
     setChecked(!checked)
