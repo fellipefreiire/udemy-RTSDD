@@ -20,10 +20,21 @@ const Dashboard: React.FC = (): JSX.Element => {
   )
 
   const months = useMemo(() => {
-    return monthsList.map((month, index) => {
+    const uniqueMonths: number[] = []
+
+    ;[...expenses, ...gains].forEach(item => {
+      const date = new Date(item.date)
+      const month = date.getMonth() + 1
+
+      if (!uniqueMonths.includes(month)) {
+        uniqueMonths.push(month)
+      }
+    })
+
+    return uniqueMonths.map((month, i) => {
       return {
-        value: index + 1,
-        label: month
+        value: month,
+        label: monthsList[i]
       }
     })
   }, [])

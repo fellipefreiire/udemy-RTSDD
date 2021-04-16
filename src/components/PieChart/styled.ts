@@ -18,7 +18,7 @@ export const LeftSide = styled.aside`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 50%;
+  width: 100%;
   height: 100%;
 `
 
@@ -26,6 +26,7 @@ export const RightSide = styled.main`
   display: flex;
   justify-self: center;
   height: 100%;
+  width: 100%;
 `
 
 export const LegendWrapper = styled.ul`
