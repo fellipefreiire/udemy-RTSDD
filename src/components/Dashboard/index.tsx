@@ -7,12 +7,15 @@ import WalletBox from '../WalletBox'
 import MessageBox from '../MessageBox'
 import PieChart from '../PieChart'
 import HistoryBox from '../HistoryBox'
+import BarChartBox from '../BarChartBox'
 
 import monthsList from '../../utils/months'
 import expenses from '../../repositories/expenses'
 import gains from '../../repositories/gains'
+import { useTheme } from '../../hooks/theme'
 
 const Dashboard: React.FC = (): JSX.Element => {
+  const { theme } = useTheme()
   const [monthSelected, setMonthSelected] = useState<number>(
     new Date().getMonth() + 1
   )
@@ -148,7 +151,7 @@ const Dashboard: React.FC = (): JSX.Element => {
         name: 'Entradas',
         value: totalGains,
         percent: Number(gainsPercent.toFixed(0)),
-        color: '#F7931B'
+        color: '#4E41f0'
       },
       {
         name: 'Saídas',
@@ -218,6 +221,102 @@ const Dashboard: React.FC = (): JSX.Element => {
     return data
   }, [yearSelected])
 
+  const relationExpensesRecurrentEventual = useMemo(() => {
+    const amountRecurrent: number[] = []
+    const amountEventual: number[] = []
+
+    expenses
+      .filter(expense => {
+        const date = new Date(expense.date)
+        const year = date.getFullYear() + 1
+        const month = date.getMonth() + 1
+
+        return month === monthSelected && year === yearSelected
+      })
+      .forEach(expense => {
+        if (expense.frequency === 'recorrente') {
+          amountRecurrent.push(Number(expense.amount))
+        } else if (expense.frequency === 'eventual') {
+          amountEventual.push(Number(expense.amount))
+        }
+      })
+
+    const amountSum = (amountList: number[]): number => {
+      const sum = amountList.reduce((accumulator, element) => {
+        return accumulator + element
+      }, 0)
+
+      return sum
+    }
+
+    const total = amountSum(amountRecurrent) + amountSum(amountEventual)
+
+    return [
+      {
+        name: 'Recorrentes',
+        amount: amountSum(amountRecurrent),
+        percent: Number(
+          ((amountSum(amountRecurrent) / total) * 100).toFixed(0)
+        ),
+        color: theme.colors.success
+      },
+      {
+        name: 'Eventuais',
+        amount: amountSum(amountEventual),
+        percent: Number(((amountSum(amountEventual) / total) * 100).toFixed(0)),
+        color: theme.colors.warning
+      }
+    ]
+  }, [monthSelected, yearSelected, theme])
+
+  const relationGainsRecurrentEventual = useMemo(() => {
+    const amountRecurrent: number[] = []
+    const amountEventual: number[] = []
+
+    gains
+      .filter(gain => {
+        const date = new Date(gain.date)
+        const year = date.getFullYear() + 1
+        const month = date.getMonth() + 1
+
+        return month === monthSelected && year === yearSelected
+      })
+      .forEach(gain => {
+        if (gain.frequency === 'recorrente') {
+          amountRecurrent.push(Number(gain.amount))
+        } else if (gain.frequency === 'eventual') {
+          amountEventual.push(Number(gain.amount))
+        }
+      })
+
+    const amountSum = (amountList: number[]): number => {
+      const sum = amountList.reduce((accumulator, element) => {
+        return accumulator + element
+      }, 0)
+
+      return sum
+    }
+
+    const total = amountSum(amountRecurrent) + amountSum(amountEventual)
+
+    return [
+      {
+        name: 'Recorrentes',
+        amount: amountSum(amountRecurrent),
+        percent: Number(
+          ((amountSum(amountRecurrent) / total) * 100).toFixed(0)
+        ),
+        color: theme.colors.success
+      },
+      {
+        name: 'Eventuais',
+        amount: amountSum(amountEventual),
+        percent: Number(((amountSum(amountEventual) / total) * 100).toFixed(0)),
+        color: theme.colors.warning
+      }
+    ]
+  }, [monthSelected, yearSelected, theme])
+
   const handleMonthSelected = (month: string) => {
     try {
       const parseMonth = Number(month)
@@ -281,9 +380,11 @@ const Dashboard: React.FC = (): JSX.Element => {
         <PieChart data={relationExpensesGains} />
         <HistoryBox
           data={historyData}
-          lineColorAmountEntry='#F7931B'
+          lineColorAmountEntry='#4E41f0'
           lineColorAmountOutput='#E44C4E'
         />
+        <BarChartBox title='Entradas' data={relationGainsRecurrentEventual} />
+        <BarChartBox title='Saídas' data={relationExpensesRecurrentEventual} />
       </S.Content>
     </S.Container>
   )
