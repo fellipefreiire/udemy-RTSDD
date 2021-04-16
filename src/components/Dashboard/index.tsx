@@ -6,6 +6,7 @@ import ContentHeader from '../ContentHeader'
 import WalletBox from '../WalletBox'
 import MessageBox from '../MessageBox'
 import PieChart from '../PieChart'
+import HistoryBox from '../HistoryBox'
 
 import monthsList from '../../utils/months'
 import expenses from '../../repositories/expenses'
@@ -25,8 +26,9 @@ const Dashboard: React.FC = (): JSX.Element => {
     ;[...expenses, ...gains].forEach(item => {
       const date = new Date(item.date)
       const month = date.getMonth() + 1
+      const year = date.getFullYear() + 1
 
-      if (!uniqueMonths.includes(month)) {
+      if (!uniqueMonths.includes(month) && year === yearSelected) {
         uniqueMonths.push(month)
       }
     })
@@ -37,7 +39,7 @@ const Dashboard: React.FC = (): JSX.Element => {
         label: monthsList[i]
       }
     })
-  }, [])
+  }, [yearSelected])
 
   const years = useMemo(() => {
     let uniqueYears: number[] = []
@@ -157,7 +159,64 @@ const Dashboard: React.FC = (): JSX.Element => {
     ]
 
     return data
-  }, [totalBalance])
+  }, [yearSelected, monthSelected, totalBalance])
+
+  const historyData = useMemo(() => {
+    const uniqueMonths: number[] = []
+    const amountEntry: number[] = []
+    const amountOutput: number[] = []
+
+    ;[...expenses, ...gains].forEach(item => {
+      const date = new Date(item.date)
+      const month = date.getMonth() + 1
+      const year = date.getFullYear() + 1
+
+      if (!uniqueMonths.includes(month) && year === yearSelected) {
+        uniqueMonths.push(month)
+      }
+    })
+
+    uniqueMonths.forEach((_, i) => {
+      const gainsHelper: number[] = []
+      const expensesHelper: number[] = []
+
+      gains.forEach(item => {
+        const date = new Date(item.date)
+        const month = date.getMonth() + 1
+        const year = date.getFullYear() + 1
+
+        if (month === uniqueMonths[i] && year === yearSelected) {
+          gainsHelper.push(Number(item.amount))
+        }
+        amountEntry[i] = gainsHelper.reduce((accumulator, element) => {
+          return accumulator + element
+        }, 0)
+      })
+
+      expenses.forEach(item => {
+        const date = new Date(item.date)
+        const month = date.getMonth() + 1
+        const year = date.getFullYear() + 1
+
+        if (month === uniqueMonths[i] && year === yearSelected) {
+          expensesHelper.push(Number(item.amount))
+        }
+        amountOutput[i] = expensesHelper.reduce((accumulator, element) => {
+          return accumulator + element
+        }, 0)
+      })
+    })
+
+    const data = uniqueMonths.map((item, i) => {
+      return {
+        month: monthsList[i].substr(0, 3),
+        amountEntry: amountEntry[i],
+        amountOutput: amountOutput[i]
+      }
+    })
+
+    return data
+  }, [yearSelected])
 
   const handleMonthSelected = (month: string) => {
     try {
@@ -220,6 +279,11 @@ const Dashboard: React.FC = (): JSX.Element => {
           icon={message.icon}
         />
         <PieChart data={relationExpensesGains} />
+        <HistoryBox
+          data={historyData}
+          lineColorAmountEntry='#F7931B'
+          lineColorAmountOutput='#E44C4E'
+        />
       </S.Content>
     </S.Container>
   )

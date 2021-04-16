@@ -4,6 +4,153 @@ export default [
     amount: '150.55',
     type: 'saída',
     frequency: 'recorrente',
+    date: '2019-01-05'
+  },
+  {
+    description: 'Água',
+    amount: '75.55',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-01-15'
+  },
+  {
+    description: 'Telefone',
+    amount: '99.99',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-01-23'
+  },
+  {
+    description: 'Plano de Saúde',
+    amount: '300.00',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-01-23'
+  },
+  {
+    description: 'Compras do mês',
+    amount: '625.78',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-01-23'
+  },
+  {
+    description: 'Lanche',
+    amount: '45.70',
+    type: 'saída',
+    frequency: 'eventual',
+    date: '2019-01-23'
+  },
+  {
+    description: 'Blusa',
+    amount: '95.70',
+    type: 'saída',
+    frequency: 'eventual',
+    date: '2019-01-23'
+  },
+  {
+    description: 'Energia elétrica',
+    amount: '125.55',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-02-10'
+  },
+  {
+    description: 'Água',
+    amount: '90.15',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-02-15'
+  },
+  {
+    description: 'Telefone',
+    amount: '99.99',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-02-23'
+  },
+  {
+    description: 'Plano de Saúde',
+    amount: '300.00',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-02-23'
+  },
+  {
+    description: 'Compras do mês',
+    amount: '540.00',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-02-25'
+  },
+  {
+    description: 'Parcela do Celular 1/5',
+    amount: '150.99',
+    type: 'saída',
+    frequency: 'eventual',
+    date: '2019-02-26'
+  },
+  {
+    description: 'Cinema',
+    amount: '45.00',
+    type: 'saída',
+    frequency: 'eventual',
+    date: '2019-02-23'
+  },
+  {
+    description: 'Energia elétrica',
+    amount: '97.00',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-03-10'
+  },
+  {
+    description: 'Água',
+    amount: '100.10',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-03-15'
+  },
+  {
+    description: 'Telefone',
+    amount: '99.99',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-03-23'
+  },
+  {
+    description: 'Plano de Saúde',
+    amount: '300.00',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-03-23'
+  },
+  {
+    description: 'Compras do mês',
+    amount: '800.50',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2019-03-17'
+  },
+  {
+    description: 'Parcela do Celular 2/5',
+    amount: '150.99',
+    type: 'saída',
+    frequency: 'eventual',
+    date: '2019-03-18'
+  },
+  {
+    description: 'Troca de Oléo do carro',
+    amount: '90.00',
+    type: 'saída',
+    frequency: 'eventual',
+    date: '2019-03-23'
+  },
+  {
+    description: 'Energia elétrica',
+    amount: '150.55',
+    type: 'saída',
+    frequency: 'recorrente',
     date: '2020-01-05'
   },
   {
