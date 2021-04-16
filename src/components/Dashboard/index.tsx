@@ -127,7 +127,7 @@ const Dashboard: React.FC = (): JSX.Element => {
         description: 'Neste mês, você gastou exatamente o que ganhou',
         footerText:
           'Tenha cuidado. No próximo mês tente poupar o seu dinheiro.',
-        icon: '/happy.svg'
+        icon: '/grinning.svg'
       }
     } else {
       return {

@@ -18,7 +18,7 @@ const MessageBox: React.FC<IMessageBoxProps> = ({
       <S.Header>
         <S.H1>
           {title}
-          <img src={icon} alt='Happy image' />
+          <img src={icon} alt={title} />
         </S.H1>
         <S.P>{description}</S.P>
       </S.Header>
