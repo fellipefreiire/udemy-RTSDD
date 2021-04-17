@@ -17,8 +17,6 @@ const AuthProvider: React.FC = ({ children }): JSX.Element => {
     isLogged ? setLogged(JSON.parse(isLogged)) : setLogged(false)
   }, [])
 
-  if (!logged) return null
-
   const signIn = (email: string, password: string) => {
     if (email === 'minha@carteira.com' && password === '123') {
       localStorage.setItem('@minha-carteira:logged', 'true')

@@ -24,4 +24,8 @@ export const Container = styled.div`
     margin: 169px 0 84px;
     border-radius: 10px;
   }
+
+  @media (max-width: 770px) {
+    padding: 1.5rem 2rem;
+  }
 `
