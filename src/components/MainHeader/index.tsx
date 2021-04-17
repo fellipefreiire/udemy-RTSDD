@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import Toggle from '../Toggle'
 import emojis from '../../utils/emojis'
 
 import * as S from './styled'
@@ -13,15 +12,13 @@ const MainHeader: React.FC = (): JSX.Element => {
   }, [])
 
   return (
-    <>
-      <S.Container>
-        <Toggle labelLeft='Light' labelRight='Dark' />
-        <S.Profile>
-          <S.Welcome>Olá, {emoji}</S.Welcome>
-          <S.Username>Felipe Freire</S.Username>
-        </S.Profile>
-      </S.Container>
-    </>
+    <S.Container>
+      <S.ToggleComponent labelLeft='Light' labelRight='Dark' />
+      <S.Profile>
+        <S.Welcome>Olá, {emoji}</S.Welcome>
+        <S.Username>Felipe Freire</S.Username>
+      </S.Profile>
+    </S.Container>
   )
 }
 

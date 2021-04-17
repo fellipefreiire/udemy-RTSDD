@@ -1,21 +1,32 @@
+import { useState } from 'react'
 import * as S from './styled'
 import Link from 'next/link'
 
-import { MdExitToApp } from 'react-icons/md'
+import Toggle from '../Toggle'
+
+import { MdExitToApp, MdClose, MdMenu } from 'react-icons/md'
 
 import contents from './contents'
 import Icons from './Icons'
 import { useAuth } from '../../hooks/auth'
 
-import Logo from '../../assets/logo.svg'
-
 const Aside: React.FC = (): JSX.Element => {
   const { signOut } = useAuth()
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleToggleMenu = () => {
+    setIsOpen(!isOpen)
+  }
 
   return (
-    <S.Container>
+    <S.Container isOpen={isOpen}>
       <S.Header>
-        <Logo />
+        <S.MenuToggle onClick={handleToggleMenu}>
+          {isOpen ? <MdClose /> : <MdMenu />}
+        </S.MenuToggle>
+        <S.LogoWrapper>
+          <img src='/logo.svg' />
+        </S.LogoWrapper>
         <S.Title>Minha Carteira</S.Title>
       </S.Header>
 
@@ -36,6 +47,9 @@ const Aside: React.FC = (): JSX.Element => {
           Sair
         </S.MenuItemButton>
       </S.MenuContainer>
+      <S.ToggleWrapper isOpen={isOpen}>
+        <Toggle labelLeft='Light' labelRight='Dark' />
+      </S.ToggleWrapper>
     </S.Container>
   )
 }
