@@ -14,6 +14,7 @@ export default createGlobalStyle`
   }
 
   body {
+    background-color: ${({ theme }) => theme.colors.primary};
     font: 400 16px Roboto, sans-serif;
     color: ${({ theme }) => theme.colors.white}
   }
