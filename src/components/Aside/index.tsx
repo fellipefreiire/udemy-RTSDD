@@ -1,20 +1,17 @@
 import * as S from './styled'
 import Link from 'next/link'
 
-import {
-  MdDashboard,
-  MdArrowDownward,
-  MdArrowUpward,
-  MdExitToApp,
-  MdAccountBalanceWallet
-} from 'react-icons/md'
+import { MdExitToApp } from 'react-icons/md'
 
 import contents from './contents'
 import Icons from './Icons'
+import { useAuth } from '../../hooks/auth'
 
 import Logo from '../../assets/logo.svg'
 
 const Aside: React.FC = (): JSX.Element => {
+  const { signOut } = useAuth()
+
   return (
     <S.Container>
       <S.Header>
@@ -34,6 +31,10 @@ const Aside: React.FC = (): JSX.Element => {
             </Link>
           )
         })}
+        <S.MenuItemButton onClick={signOut}>
+          <MdExitToApp />
+          Sair
+        </S.MenuItemButton>
       </S.MenuContainer>
     </S.Container>
   )

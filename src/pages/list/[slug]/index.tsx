@@ -1,9 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Layout from '../../../components/Layout'
 import List from '../../../components/List'
-
-import gains from '../../../repositories/gains'
-import expenses from '../../../repositories/expenses'
+import SignIn from '../../../components/SignIn'
+import { useAuth } from '../../../hooks/auth'
 
 interface ISlugPageProps {
   type: {
@@ -19,11 +18,25 @@ interface ISlugPageProps {
   }
 }
 
-const SlugPage: React.FC<ISlugPageProps> = ({ type }): JSX.Element => (
-  <Layout>
-    <List title={type.title} lineColor={type.lineColor} list={type.list} />
-  </Layout>
-)
+const SlugPage: React.FC<ISlugPageProps> = ({ type }): JSX.Element => {
+  const { logged } = useAuth()
+
+  return (
+    <>
+      {logged ? (
+        <Layout>
+          <List
+            title={type.title}
+            lineColor={type.lineColor}
+            list={type.list}
+          />
+        </Layout>
+      ) : (
+        <SignIn />
+      )}
+    </>
+  )
+}
 
 export default SlugPage
 

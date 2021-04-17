@@ -1,7 +1,7 @@
 const contents = [
   {
     label: 'MdDashboard',
-    href: '#',
+    href: '/',
     text: 'Dashboard'
   },
   // {
@@ -11,19 +11,19 @@ const contents = [
   // },
   {
     label: 'MdArrowUpward',
-    href: '#',
+    href: '/list/entry-balance',
     text: 'Entradas'
   },
   {
     label: 'MdArrowDownward',
-    href: '#',
+    href: '/list/exit-balance',
     text: 'Saídas'
-  },
-  {
-    label: 'MdExitToApp',
-    href: '#',
-    text: 'Sair'
   }
+  // {
+  //   label: 'MdExitToApp',
+  //   href: '#',
+  //   text: 'Sair'
+  // }
 ]
 
 export default contents
